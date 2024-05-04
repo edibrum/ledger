@@ -15,7 +15,7 @@ class PeopleController < ApplicationController
       @active = true
     end
 
-    @people = Person.where(active: @active)
+    @people = Person.paginate(:page=>params[:page],per_page:15).where(active: @active).includes(:user)
   end
 
   # GET /people/search?q=a_name
