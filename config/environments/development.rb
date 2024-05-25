@@ -76,4 +76,7 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.perform_deliveries = true
+
+  # Envio de Emails de Relatório de Saldo
+  config.action_mailer.delivery_method = :letter_opener_web
 end

@@ -20,4 +20,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "dashboard#index"
+
+  # Envio de Emails de Relatório de Saldo
+  mount LetterOpenerWeb::Engine, at: "/emails" if Rails.env.development?
 end
