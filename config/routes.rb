@@ -1,3 +1,6 @@
+require 'sidekiq'
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   get 'reports/balance'
   get 'dashboard/index'
@@ -23,4 +26,8 @@ Rails.application.routes.draw do
 
   # Envio de Emails de Relatório de Saldo
   mount LetterOpenerWeb::Engine, at: "/emails" if Rails.env.development?
+
+  #Sidekiq - Para o Envio de Emails
+  mount Sidekiq::Web => '/sidekiq'
+  
 end

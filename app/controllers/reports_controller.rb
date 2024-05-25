@@ -5,7 +5,8 @@ class ReportsController < ApplicationController
 # end
 
   def balance
-    UserMailer.balance_report_email(current_user).deliver_now
+    #UserMailer.balance_report_email(current_user).deliver_now #síncrono
+    UserMailer.balance_report_email(current_user).deliver_later #usar o sidekiq
     redirect_to root_path, notice: 'Você receberá um email com os relatórios'
   end
 end
